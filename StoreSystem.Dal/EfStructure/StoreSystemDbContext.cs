@@ -1,6 +1,6 @@
 ﻿namespace StoreSystem.Dal.EfStructure;
 
-internal class StoreSystemDbContext : DbContext
+public class StoreSystemDbContext : DbContext
 {
     public DbSet<Customer> Customers => Set<Customer>();
     public DbSet<Seller> Sellers => Set<Seller>();
@@ -9,7 +9,7 @@ internal class StoreSystemDbContext : DbContext
     public DbSet<OrderRecord> OrderRecords => Set<OrderRecord>();
     public DbSet<Sell> Sells => Set<Sell>();
 
-    public StoreSystemDbContext(DbContextOptions options)
+    public StoreSystemDbContext(DbContextOptions<StoreSystemDbContext> options)
         : base(options)
     {
         Database.EnsureCreated();

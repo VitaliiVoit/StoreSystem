@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using StoreSystem.Dal.EfStructure;
 
 namespace StoreSystem.Dal.Extensions;
 
