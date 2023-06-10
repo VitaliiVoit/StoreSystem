@@ -58,3 +58,63 @@ body {
   width: 100%;
   margin: 0 auto;
 }
+
+.btn {
+  width: 135px;
+  height: 45px;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  transition: all 0.3s linear;
+}
+
+.products {
+  width: 100%;
+}
+.products__body {
+  display: flex;
+}
+.products__add-menu {
+  display: flex;
+  justify-content: center;
+}
+.products table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 15px 0 15px 0;
+  text-align: center;
+}
+.products table thead {
+  font-size: 24px;
+  font-weight: 700;
+}
+.products table tbody {
+  font-size: 18px;
+}
+.products table td {
+  width: 25%;
+  border: 1px solid #28292b;
+  color: #28292b;
+  padding: 5px;
+  overflow-wrap: break-word;
+}
+.products table button {
+  background: #174536;
+  color: #ecf0f1;
+}
+.products table button:hover {
+  background: #215C48;
+}
+
+.form label {
+  font-size: 18px;
+  margin: 5px;
+}
+.form__text-input {
+  font-size: 18px;
+  margin: 15px 0;
+  background: none;
+  border-bottom: 2.5px #28292b solid;
+  text-align: center;
+  width: 250px;
+}
