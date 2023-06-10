@@ -17,8 +17,8 @@
                     <span class="header__title">Store System</span>
                 </div>
                 <nav class="header__menu">
-                    <a href="##" class="header__link">Home</a>
-                    <a href="##" class="header__link">Products</a>
+                    <a href="/home" class="header__link">Home</a>
+                    <a href="/products" class="header__link">Products</a>
                     <a href="##" class="header__link">Order</a>
                 </nav>
             </div>
@@ -33,20 +33,12 @@
                         <thead>
                             <tr>
                                 <td>Name</td>
-                                <td>Price</td>
                                 <td>Count</td>
+                                <td>Price</td>
                                 <td></td>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Name</td>
-                                <td>Price</td>
-                                <td>Count</td>
-                                <td>
-                                    <button class="btn">Remove</button>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
                     <div class="products__add-menu" style="flex: 0 1 35%;">
@@ -57,18 +49,20 @@
                             </p>
                             <p>
                                 <label>Count</label> <br>
-                                <input type="number" name="weight" class="form__text-input" min="1" id="productCount">
+                                <input type="number" name="count" class="form__text-input" min="1" id="productCount">
                             </p>
                             <p>
                                 <label>Price</label> <br>
                                 <input type="number" name="price" class="form__text-input" min="1" step=".01" id="productPrice">
                             </p>
-                            <button class="btn" id="">Add</button>
+                            <button class="btn" id="addproduct-btn">Add</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </main>
+    <script src="/js/script.js"></script>
+    <script src="/js/products-script.js"></script>
 </body>
 </html>

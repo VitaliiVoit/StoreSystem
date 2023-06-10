@@ -7,9 +7,10 @@ public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
     {
     }
 
-    public override IEnumerable<Customer> GetAll()
+    public override Task<List<Customer>> GetAll()
         => Table.Include(c => c.Orders)
-                .OrderBy(c => c.FullName);
+                .OrderBy(c => c.FullName)
+                .ToListAsync();
 
     public override Customer? GetById(int id)
         => Table.Where(c => c.Id == id)

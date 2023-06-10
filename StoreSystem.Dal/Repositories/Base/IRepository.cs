@@ -9,6 +9,6 @@ public interface IRepository<T>
     int Delete(T entity);
     int DeleteRange(IEnumerable<T> entites);
     T? GetById(int id);
-    IEnumerable<T> GetAll();
+    Task<List<T>> GetAll();
     int SaveChanges();
 }

@@ -36,9 +36,9 @@ public abstract class BaseRepository<T> : IRepository<T>
         return SaveChanges();
     }
 
-    public virtual IEnumerable<T> GetAll()
+    public virtual async Task<List<T>> GetAll()
     {
-        return Table;
+        return await Table.ToListAsync();
     }
 
     public virtual T? GetById(int id)

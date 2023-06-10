@@ -7,7 +7,8 @@ public class SellRepository : BaseRepository<Sell>, ISellRepository
     {
     }
 
-    public override IEnumerable<Sell> GetAll()
+    public override Task<List<Sell>> GetAll()
         => Table.Include(s => s.OrderNavigation)
-                .Include(s => s.SellerNavigation);
+                .Include(s => s.SellerNavigation)
+                .ToListAsync();
 }
