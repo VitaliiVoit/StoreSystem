@@ -52,29 +52,16 @@ function rowTable(pair) {
     tr.append(createTd(pair.key.name));
     tr.append(createTd(pair.key.price));
 
-    const countInput = document.createElement("input");
-    countInput.id = "countInput";
-    countInput.type = "number";
-    countInput.min = "1";
-    countInput.max = "100";
-    countInput.step = "1";
-    countInput.value = `${pair.value}`;
+    const countInput = createDefaultNumberInput(`${pair.value}`);
     countInput.addEventListener("input", async (e) => await updateCount(pair.key.id, e.target.value));
 
     tr.append(createTd(countInput));
 
-    const button = document.createElement("button");
-    button.classList.add("btn");
-    button.append("X");
+    const button = createDefaultButton("X");
     button.addEventListener("click", async () => await removeFromCart(pair.key.id));
     tr.append(createTd(button));
 
     return tr;
 }
 
-function createTd(parameter) {
-    const td = document.createElement("td");
-    td.append(parameter);
-    return td;
-}
 getCart();

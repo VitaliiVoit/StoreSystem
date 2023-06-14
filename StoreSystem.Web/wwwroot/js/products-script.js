@@ -11,7 +11,7 @@ async function addProduct() {
         }),
     });
     reset();
-    await getProducts();
+    await getProducts(rowTable);
 }
 
 async function removeProduct(id) {
@@ -25,40 +25,15 @@ async function removeProduct(id) {
     }
 }
 
-async function getProducts() {
-    const response = await fetch("/api/products", {
-        method: "GET",
-        headers: { "Accept": "application/json" }
-    });
-    if (response.ok === true) {
-        const products = await response.json();
-        const rows = document.querySelector("tbody");
-        products.forEach(product => rows.append(rowTable(product)));
-    }
-}
-
 function rowTable(product) {
-    const tr = document.createElement("tr");
-    tr.setAttribute("data-rowid", product.id);
+    const tr = getProductInfo(product);
 
-    tr.append(createTd(product.name));
-    tr.append(createTd(product.price));
-    tr.append(createTd(product.count));
-
-    const button = document.createElement("button");
-    button.classList.add("btn");
-    button.append("Remove");
+    const button = createDefaultButton("Remove");
     button.addEventListener("click", async() => await removeProduct(product.id));
     
     tr.append(createTd(button));
 
     return tr;
-}
-
-function createTd(parameter) {
-    const td = document.createElement("td");
-    td.append(parameter);
-    return td;
 }
 
 function reset() {
@@ -67,4 +42,4 @@ function reset() {
     document.getElementById("productPrice").value = "";
 }
 
-getProducts();
+getProducts(rowTable);
