@@ -7,14 +7,14 @@ public class CustomerRepository : BaseRepository<Customer>, ICustomerRepository
     {
     }
 
-    public override Task<List<Customer>> GetAll()
-        => Table.Include(c => c.Orders)
+    public override async Task<List<Customer>> GetAll()
+        => await Table.Include(c => c.Orders)
                 .OrderBy(c => c.FullName)
                 .ToListAsync();
 
-    public override Customer? GetById(int id)
-        => Table.Where(c => c.Id == id)
+    public override async Task<Customer?> GetById(int id)
+        => await Table.Where(c => c.Id == id)
                 .Include(c => c.Orders)
-                .FirstOrDefault();
+                .FirstOrDefaultAsync();
 
 }

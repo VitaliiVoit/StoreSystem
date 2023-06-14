@@ -17,6 +17,16 @@ public class Product : BaseEntity
         Price = price;
     }
 
+    public override int GetHashCode()
+    {
+        unchecked
+        {
+            int hash = base.GetHashCode();
+            hash = hash * 23 + Name.GetHashCode();
+            return hash;
+        }
+    }
+
     public override string ToString()
     {
         return $"{Name} ${Price} | In Storage : {Count}";

@@ -98,13 +98,6 @@ body {
   padding: 5px;
   overflow-wrap: break-word;
 }
-.products table button {
-  background: #174536;
-  color: #ecf0f1;
-}
-.products table button:hover {
-  background: #215C48;
-}
 
 .form label {
   font-size: 18px;

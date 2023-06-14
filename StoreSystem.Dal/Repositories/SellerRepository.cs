@@ -7,6 +7,6 @@ public class SellerRepository : BaseRepository<Seller>, ISellerRepository
     {
     }
 
-    public override Seller? GetById(int id)
-        => Table.FirstOrDefault(s => s.Id == id);
+    public override async Task<Seller?> GetById(int id)
+        => await Table.FirstOrDefaultAsync(s => s.Id == id);
 }

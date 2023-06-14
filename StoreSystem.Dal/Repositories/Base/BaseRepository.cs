@@ -41,25 +41,13 @@ public abstract class BaseRepository<T> : IRepository<T>
         return await Table.ToListAsync();
     }
 
-    public virtual T? GetById(int id)
+    public virtual async Task<T?> GetById(int id)
     {
-        return Table.Find(id);
+        return await Table.FirstOrDefaultAsync(item => item.Id == id);
     }
 
     public int SaveChanges()
     {
         return Context.SaveChanges();
-    }
-
-    public virtual int Update(T entity)
-    {
-        Table.Update(entity);
-        return SaveChanges();
-    }
-
-    public virtual int UpdateRange(IEnumerable<T> entites)
-    {
-        Table.UpdateRange(entites);
-        return SaveChanges();
     }
 }

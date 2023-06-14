@@ -11,38 +11,27 @@ async function getProducts() {
 }
 
 function rowTable(product) {
-    const tr = rowProductInfo(product);
-    
-    const buttonTd = document.createElement("td");
-    
-    const button = document.createElement("button");
-    button.classList.add("btn");
-    button.append("Add");
-    
-    buttonTd.append(button);
-    tr.appendChild(buttonTd);
-
-    return tr;
-}
-
-function rowProductInfo(product) {
     const tr = document.createElement("tr");
     tr.setAttribute("data-rowid", product.id);
 
-    const nameTd = document.createElement("td");
-    nameTd.append(product.name);
-    tr.append(nameTd);
+    tr.append(createTd(product.name));
+    tr.append(createTd(product.price));
+    tr.append(createTd(product.count));
 
-    const countTd = document.createElement("td");
-    countTd.append(product.count);
-    tr.append(countTd);
-
-    const priceTd = document.createElement("td");
-    priceTd.append(product.price);
-    tr.append(priceTd);
+    const button = document.createElement("button");
+    button.classList.add("btn");
+    button.append("To Cart");
+    button.addEventListener("click", async() => await addToCart(product.id));
+    
+    tr.append(createTd(button));
 
     return tr;
 }
 
+function createTd(parameter) {
+    const td = document.createElement("td");
+    td.append(parameter);
+    return td;
+}
 
 getProducts();
