@@ -19,7 +19,6 @@ function rowTable(product) {
     button.addEventListener("click", async() => await addToCart(product.id));
 
     const div = document.createElement("div");
-    div.style.display = "flex";
     div.append(countInput);
     div.append(button);
 

@@ -57,7 +57,7 @@ function rowTable(pair) {
 
     tr.append(createTd(countInput));
 
-    const button = createDefaultButton("X");
+    const button = createDefaultButton("Remove");
     button.addEventListener("click", async () => await removeFromCart(pair.key.id));
     tr.append(createTd(button));
 

@@ -10,8 +10,12 @@ async function addProduct() {
             price : parseFloat(document.getElementById("productPrice").value),
         }),
     });
+    if (response.ok === true) {
+        const product = await response.json();
+        const rows = document.querySelector("tbody");
+        rows.append(rowTable(product));
+    }
     reset();
-    await getProducts(rowTable);
 }
 
 async function removeProduct(id) {

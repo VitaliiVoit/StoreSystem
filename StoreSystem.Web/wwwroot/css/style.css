@@ -98,6 +98,13 @@ body {
   padding: 5px;
   overflow-wrap: break-word;
 }
+.products table td div {
+  display: flex;
+  justify-content: space-around;
+}
+.products table input {
+  width: 50px;
+}
 
 .form label {
   font-size: 18px;
