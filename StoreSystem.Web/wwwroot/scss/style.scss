@@ -61,17 +61,21 @@ body {
     }
 }
 
-.form {
-    label {
-        font-size: 18px;
-        margin: 5px;
-    }
-    &__text-input {
-        font-size: 18px;
-        margin: 15px 0;
-        background: none;
-        border-bottom: 2.5px #28292b solid;
-        text-align: center;
-        width: 250px;
-    }
+label {
+    font-size: 18px;
+    margin: 5px;
+}
+input {
+    font-size: 18px;
+    margin: 15px 0;
+    background: none;
+    border-bottom: 2.5px #28292b solid;
+    text-align: center;
+    width: 250px;
+}
+
+.customer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

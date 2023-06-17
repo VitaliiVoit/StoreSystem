@@ -24,5 +24,6 @@ app.RegisterMenu();
 
 app.RegisterProductsAPIs();
 app.RegisterCartAPIs();
+app.RegisterCustomerAPIs();
 
 app.Run();

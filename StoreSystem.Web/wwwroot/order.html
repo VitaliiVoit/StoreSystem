@@ -41,9 +41,26 @@
                         <tbody>
                         </tbody>
                     </table>
-                    <div>
-                        <h2>Total amount: </h2>
-                        <h2 class="cart__total-amount"></h2>
+                    <div class="customer" style="flex: 0 1 35%;">
+                        <div class="form">
+                            <p>
+                                <label>FirstName</label> <br>
+                                <input type="text" name="firstName" class="form__text-input" id="firstName">
+                            </p>
+                            <p>
+                                <label>LastName</label> <br>
+                                <input type="text" name="lastName" class="form__text-input" min="1" id="lastName">
+                            </p>
+                            <button class="btn" id="addcustomer-btn">Add</button>
+                        </div>
+                        <input type="text" list="customers" id="customer-input">
+                        <datalist id="customers">
+                            
+                        </datalist>
+                        <div style="display: flex;">
+                            <h2>Total amount: </h2>
+                            <h2 class="cart__total-amount"></h2>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -51,5 +68,6 @@
     </main>
     <script src="/js/module.js"></script>
     <script src="/js/cart-script.js"></script>
+    <script src="/js/customer-script.js"></script>
 </body>
 </html>

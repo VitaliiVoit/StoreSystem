@@ -106,15 +106,22 @@ body {
   width: 50px;
 }
 
-.form label {
+label {
   font-size: 18px;
   margin: 5px;
 }
-.form__text-input {
+
+input {
   font-size: 18px;
   margin: 15px 0;
   background: none;
   border-bottom: 2.5px #28292b solid;
   text-align: center;
   width: 250px;
+}
+
+.customer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
