@@ -61,6 +61,13 @@ body {
     }
 }
 
+.form-deactive {
+    height: 0;
+    p, input, button, label {
+        transition: all 0.0s ease;
+        visibility: hidden;
+    }
+}
 label {
     font-size: 18px;
     margin: 5px;

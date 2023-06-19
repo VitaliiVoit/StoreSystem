@@ -38,5 +38,7 @@ public static class CartApiExtension
 
             return Results.Json(product);
         });
+
+        app.MapDelete("/api/cart/clear", (Cart cart) => cart.Clear());
     }
 }

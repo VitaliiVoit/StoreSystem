@@ -14,6 +14,8 @@ public class Cart : IEnumerable<KeyValuePair<Product, int>>
         _products = new Dictionary<Product, int>();
     }
 
+    public void Clear() => _products.Clear();
+
     public void Add(Product product, int count)
     {
         if (_products.ContainsKey(product))

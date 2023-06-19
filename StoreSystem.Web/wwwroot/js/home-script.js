@@ -1,5 +1,5 @@
 async function addToCart(id) {
-    const count = parseInt(document.getElementById("countInput").value);
+    const count = parseInt(document.getElementById("countInput").value); // FIX BUG
     const response = await fetch(`/api/cart/add/${id}-${count}`, {
         method: "POST",
         headers: { "Accept" : "application/json" }

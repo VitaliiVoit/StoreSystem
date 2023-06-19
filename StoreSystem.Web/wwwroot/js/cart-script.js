@@ -33,6 +33,16 @@ async function updateCount(id, value) {
     }
 }
 
+async function clearCart() {
+    await fetch("/api/cart/clear", {
+        method: "DELETE",
+        headers: { "Accept" : "application/json"}
+    });
+    const tbody = document.querySelector("tbody");
+    tbody.childNodes.forEach(node => node.remove());
+    await getTotalAmount();
+}
+
 async function getTotalAmount() {
     const response = await fetch("/api/cart/totalAmount", {
         method: "GET",
@@ -63,5 +73,7 @@ function rowTable(pair) {
 
     return tr;
 }
+
+document.getElementById("cart-clear-btn").addEventListener("click", async () => await clearCart());
 
 getCart();

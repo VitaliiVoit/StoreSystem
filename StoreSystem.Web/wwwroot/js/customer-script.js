@@ -28,5 +28,9 @@ function createOption(customer) {
 }
 
 document.getElementById("addcustomer-btn").addEventListener("click", async () => await addCustomer());
+document.getElementById("new-customer-btn").addEventListener("click", () => {
+    const form = document.querySelector(".form");
+    form.classList.toggle("form-deactive");
+})
 
 getCustomers();

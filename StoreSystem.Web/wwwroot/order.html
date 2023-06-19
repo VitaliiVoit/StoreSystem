@@ -29,20 +29,24 @@
         <section class="products">
             <div class="container">
                 <div class="products__body">
-                    <table style="flex: 0 1 65%;">
-                        <thead>
-                            <tr>
-                                <td>Name</td>
-                                <td>Price</td>
-                                <td>Count</td>
-                                <td></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+                    <div style="flex: 0 1 65%;">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Price</td>
+                                    <td>Count</td>
+                                    <td></td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                        <button class="btn" id="cart-clear-btn">Clear</button>
+                    </div>
                     <div class="customer" style="flex: 0 1 35%;">
-                        <div class="form">
+                        <button class="btn" id="new-customer-btn" style="width: 45px;">↓</button>
+                        <div class="form form-deactive">
                             <p>
                                 <label>FirstName</label> <br>
                                 <input type="text" name="firstName" class="form__text-input" id="firstName">
@@ -53,10 +57,13 @@
                             </p>
                             <button class="btn" id="addcustomer-btn">Add</button>
                         </div>
+                        <p style="margin: 10px 0 0 0;">Customers</p>
                         <input type="text" list="customers" id="customer-input">
-                        <datalist id="customers">
-                            
+                        <datalist id="customers">  
                         </datalist>
+                        <div style="display: flex; justify-content: space-around;">
+                            <button class="btn" id="set-customer-btn">Set</button>
+                        </div>
                         <div style="display: flex;">
                             <h2>Total amount: </h2>
                             <h2 class="cart__total-amount"></h2>
