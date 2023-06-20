@@ -1,5 +1,5 @@
 async function addToCart(id) {
-    const count = parseInt(document.getElementById("countInput").value); // FIX BUG
+    const count = parseInt(document.getElementById(`countInput-${id}`).value); // FIX BUG
     const response = await fetch(`/api/cart/add/${id}-${count}`, {
         method: "POST",
         headers: { "Accept" : "application/json" }
@@ -14,6 +14,7 @@ function rowTable(product) {
     const tr = getProductInfo(product);
 
     const countInput = createDefaultNumberInput();
+    countInput.id = `countInput-${product.id}`;
 
     const button = createDefaultButton("To Cart");
     button.addEventListener("click", async() => await addToCart(product.id));

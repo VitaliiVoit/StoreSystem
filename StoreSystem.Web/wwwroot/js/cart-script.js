@@ -39,7 +39,10 @@ async function clearCart() {
         headers: { "Accept" : "application/json"}
     });
     const tbody = document.querySelector("tbody");
-    tbody.childNodes.forEach(node => node.remove());
+    const elements = Array.from(tbody.children);
+    for (const element of elements) {
+        tbody.removeChild(element);
+    }
     await getTotalAmount();
 }
 
