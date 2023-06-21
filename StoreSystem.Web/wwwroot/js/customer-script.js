@@ -5,8 +5,8 @@ async function getCustomers() {
     });
     if (response.ok === true) {
         const customers = await response.json();
-        const dataList = document.getElementById("customers");
-        customers.forEach(customer => dataList.append(createOption(customer)));
+        const select = document.getElementById("customers");
+        customers.forEach(customer => select.append(createOption(customer)));
     }
 }
 
@@ -24,13 +24,31 @@ async function addCustomer() {
 function createOption(customer) {
     const option = document.createElement("option");
     option.value = `${customer.fullName}`;
+    option.setAttribute("customer-id", customer.id);
     return option;
 }
+
+async function setCustomerInCart() {
+    var val = document.getElementById("customer-input").value;
+    var opts = document.getElementById('customers').childNodes;
+    for (var i = 0; i < opts.length; i++) {
+      if (opts[i].value === val) {
+        let id = opts[i].getAttribute("customer-id");
+        const response = await fetch(`/api/customers/set/${id}`, {
+            method: "POST",
+            headers: { "Accept" : "application/json" }
+        });
+        break;
+      }
+    }
+}
+
+document.getElementById("customer-input").addEventListener("input", async() => await setCustomerInCart());
 
 document.getElementById("addcustomer-btn").addEventListener("click", async () => await addCustomer());
 document.getElementById("new-customer-btn").addEventListener("click", () => {
     const form = document.querySelector(".form");
     form.classList.toggle("form-deactive");
-})
+});
 
 getCustomers();

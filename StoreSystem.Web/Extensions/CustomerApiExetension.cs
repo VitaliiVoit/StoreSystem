@@ -7,6 +7,16 @@ public static class CustomerApiExetension
         app.MapGet("/api/customers", async (ICustomerRepository customerRepository)
             => await customerRepository.GetAll());
 
+        app.MapPost("/api/customers/set/{id:int}",
+            async(int id, ICustomerRepository customerRepository, Cart cart) =>
+            {
+                Customer? customer = await customerRepository.GetById(id);
+                if (customer is null) return Results.BadRequest(new { Message = "Not Found" });
+
+                cart.Customer = customer;
+                return Results.Json(customer);
+            });
+
         app.MapPost("/api/customers/add",
             async (HttpContext context, ICustomerRepository customerRepository) =>
             {

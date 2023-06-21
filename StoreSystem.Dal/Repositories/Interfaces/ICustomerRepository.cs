@@ -2,4 +2,5 @@
 
 public interface ICustomerRepository : IRepository<Customer>
 {
+    Task<Customer?> GetByFullName(string fullName);
 }
