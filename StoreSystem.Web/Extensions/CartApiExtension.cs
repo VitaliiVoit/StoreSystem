@@ -1,4 +1,6 @@
-﻿namespace StoreSystem.Web.Extensions;
+﻿using Microsoft.AspNetCore.Authorization;
+
+namespace StoreSystem.Web.Extensions;
 
 public static class CartApiExtension
 {
@@ -7,7 +9,7 @@ public static class CartApiExtension
         app.MapGet("/api/cart", (Cart cart) => cart);
         app.MapGet("/api/cart/totalAmount", (Cart cart) => cart.TotalAmount);
 
-        app.MapPost("/api/cart/add/{id:int}-{count:int}",
+        app.MapPost("/api/cart/add/{id:int}-{count:int}", [Authorize]
             async (int id, int count, Cart cart, IProductRepository productRepository) =>
             {
                 Product? product = await productRepository.GetById(id);
