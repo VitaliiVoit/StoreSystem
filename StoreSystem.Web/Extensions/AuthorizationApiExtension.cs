@@ -17,10 +17,7 @@ public static class AuthorizationApiExtension
         app.MapPost("/signup", async (HttpContext context, ISellerRepository sellerRepository) =>
         {
             var form = context.Request.Form;
-            if (string.IsNullOrWhiteSpace(form["firstname"]) ||
-                string.IsNullOrWhiteSpace(form["lastname"]) ||
-                string.IsNullOrWhiteSpace(form["password"]) ||
-                string.IsNullOrWhiteSpace(form["phone"]))
+            if (!IsFormValid(form))
             {
                 return Results.BadRequest(new { Message = "Error" });
             }
@@ -38,8 +35,7 @@ public static class AuthorizationApiExtension
         app.MapPost("/login", async (HttpContext context, ISellerRepository sellerRepository) =>
         {
             var form = context.Request.Form;
-            if (string.IsNullOrWhiteSpace(form["password"]) ||
-                string.IsNullOrWhiteSpace(form["phone"]))
+            if (!IsFormValid(form))
             {
                 return Results.BadRequest(new { Message = "Error" });
             }
@@ -63,5 +59,14 @@ public static class AuthorizationApiExtension
             await context.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
             return Results.Redirect("/login");
         });
+    }
+
+    private static bool IsFormValid(IFormCollection form)
+    {
+        foreach (var key in form.Keys)
+        {
+            if (string.IsNullOrWhiteSpace(form[key])) return false;
+        }
+        return true;
     }
 }

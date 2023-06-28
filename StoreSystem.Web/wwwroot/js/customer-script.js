@@ -19,6 +19,11 @@ async function addCustomer() {
             lastName: document.getElementById("lastName").value,
         }),
     });
+    if (response.ok === true) {
+        const customer = await response.json();
+        const datalist = document.getElementById("customers");
+        datalist.append(createOption(customer));
+    }
 }
 
 function createOption(customer) {
