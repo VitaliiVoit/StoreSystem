@@ -22,7 +22,7 @@ public static class AuthorizationApiExtension
                 return Results.BadRequest(new { Message = "Error" });
             }
 
-            var seller = await sellerRepository.GetByFullNameAndPhone($"{form["firstname"]} {form["lastname"]}", form["phone"]!);
+            var seller = await sellerRepository.GetByPhone(form["phone"]!);
             if (seller is not null) return Results.Problem("This seller already exists");
 
             seller = new Seller(form["firstname"]!, form["lastname"]!, form["phone"]!, form["password"]!);
@@ -45,8 +45,7 @@ public static class AuthorizationApiExtension
 
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.MobilePhone, seller.Phone),
-                new Claim(ClaimTypes.Name, seller.FullName!),
+                new Claim(ClaimTypes.Name, seller.Phone),
             };
 
             ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, "Cookies");

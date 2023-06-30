@@ -11,8 +11,8 @@ public class SellerRepository : BaseRepository<Seller>, ISellerRepository
         => await Table.Where(s => s.FullName == fullName)
                 .FirstOrDefaultAsync();
 
-    public async Task<Seller?> GetByFullNameAndPhone(string fullname, string phone)
-        => await Table.Where(s => s.FullName == fullname && s.Phone == phone)
+    public async Task<Seller?> GetByPhone(string phone)
+        => await Table.Where(s => s.Phone == phone)
                 .FirstOrDefaultAsync();
 
     public async Task<Seller?> GetByPhoneAndPassword(string phone, string password)

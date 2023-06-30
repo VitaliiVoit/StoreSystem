@@ -6,7 +6,6 @@ namespace StoreSystem.Domain.Models;
 public class Cart : IEnumerable<KeyValuePair<Product, int>>
 {
     private readonly Dictionary<Product, int> _products;
-    public Customer? Customer { get; set; }
 
     public decimal TotalAmount => _products.Sum(p => p.Key.Price * p.Value);
 

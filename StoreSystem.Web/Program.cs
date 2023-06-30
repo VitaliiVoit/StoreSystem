@@ -8,6 +8,9 @@ using System.Security.Claims;
 var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")!;
 
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession();
+
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
                 .AddCookie(options => options.LoginPath = "/login");
 builder.Services.AddAuthorization();
@@ -26,6 +29,8 @@ if (app.Environment.IsDevelopment())
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
+app.UseSession();
+
 app.UseAuthentication();
 app.UseAuthorization();
 
@@ -36,5 +41,6 @@ app.RegisterProductsAPIs();
 app.RegisterCartAPIs();
 app.RegisterCustomerAPIs();
 app.RegisterAuthorizationAPIs();
+app.RegisterSellerAPIs();
 
 app.Run();
