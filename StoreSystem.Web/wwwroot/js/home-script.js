@@ -10,6 +10,13 @@ async function addToCart(id) {
     }
 }
 
+async function getCurrentSeller() {
+    const response = await fetch("/api/seller/get", {
+        method: "GET",
+        headers: { "Accept" : "application/json" }
+    });
+}
+
 function rowTable(product) {
     const tr = getProductInfo(product);
 
@@ -30,3 +37,4 @@ function rowTable(product) {
 
 
 getProducts(rowTable);
+getCurrentSeller();

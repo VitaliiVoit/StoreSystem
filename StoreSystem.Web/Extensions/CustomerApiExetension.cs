@@ -13,9 +13,15 @@ public static class CustomerApiExetension
                 Customer? customer = await customerRepository.GetById(id);
                 if (customer is null) return Results.BadRequest(new { Message = "Not Found" });
 
-                context.Items["customer"] = customer;
+                context.Session.Set("customer", customer);
                 return Results.Json(customer);
             });
+
+        app.MapDelete("/api/customers/remove-current", (HttpContext context) =>
+        {
+            context.Session.Remove("customer");
+            return Results.Ok();
+        });
 
         app.MapPost("/api/customers/add",
             async (HttpContext context, ICustomerRepository customerRepository) =>

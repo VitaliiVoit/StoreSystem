@@ -8,6 +8,7 @@ public class Product : BaseEntity
 
     public decimal Price { get; set; }
 
+    [JsonIgnore]
     public IEnumerable<OrderRecord> OrderRecords { get; set; } = new List<OrderRecord>();
 
     public Product(string name, int count , decimal price)

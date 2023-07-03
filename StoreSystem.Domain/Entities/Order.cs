@@ -7,5 +7,6 @@ public class Order : BaseEntity
 
     public Sell? SellNavigation { get; set; }
 
+    [JsonIgnore]
     public IEnumerable<OrderRecord> OrderRecords { get; set; } = new List<OrderRecord>();
 }

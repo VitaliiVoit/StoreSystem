@@ -33,7 +33,7 @@ function createOption(customer) {
     return option;
 }
 
-async function setCustomerInCart() {
+async function setCustomer() {
     var val = document.getElementById("customer-input").value;
     var opts = document.getElementById('customers').childNodes;
     for (var i = 0; i < opts.length; i++) {
@@ -48,7 +48,14 @@ async function setCustomerInCart() {
     }
 }
 
-document.getElementById("customer-input").addEventListener("input", async() => await setCustomerInCart());
+async function removeCurrentCustomer() {
+    await fetch("/api/customers/remove-current", {
+        method: "DELETE",
+    });
+    document.getElementById("customer-input").value = "";
+}
+
+document.getElementById("customer-input").addEventListener("input", async() => await setCustomer());
 
 document.getElementById("addcustomer-btn").addEventListener("click", async () => await addCustomer());
 document.getElementById("new-customer-btn").addEventListener("click", () => {

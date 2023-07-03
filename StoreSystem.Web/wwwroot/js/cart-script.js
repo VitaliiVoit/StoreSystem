@@ -58,6 +58,14 @@ async function getTotalAmount() {
     }
 }
 
+async function sell() {
+    const response = await fetch("/api/seller/sell", {
+        method: "POST"
+    });
+    await clearCart();
+    await removeCurrentCustomer();
+}
+
 function rowTable(pair) {
     const tr = document.createElement("tr");
     tr.setAttribute("data-rowid", pair.key.id);
@@ -78,5 +86,6 @@ function rowTable(pair) {
 }
 
 document.getElementById("cart-clear-btn").addEventListener("click", async () => await clearCart());
+document.getElementById("sell-btn").addEventListener("click", async () => await sell());
 
 getCart();
